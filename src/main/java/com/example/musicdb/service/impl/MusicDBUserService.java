@@ -1,4 +1,4 @@
-package com.example.musicdb.service;
+package com.example.musicdb.service.impl;
 
 import com.example.musicdb.model.entity.UserEntity;
 import com.example.musicdb.repo.UserRepo;

@@ -1,6 +1,6 @@
 package com.example.musicdb.config;
 
-import com.example.musicdb.service.MusicDBUserService;
+import com.example.musicdb.service.impl.MusicDBUserService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,7 +32,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password") // from <input type="password" name="password" ... />
                 .defaultSuccessUrl("/") // after successful Login go to Homepage
                 .failureForwardUrl("/users/login-error"); // TODO
-
     }
 
     @Override
