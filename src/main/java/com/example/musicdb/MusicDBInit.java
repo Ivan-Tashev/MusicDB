@@ -23,7 +23,6 @@ public class MusicDBInit implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
     }
 
-
     @Override
     public void run(String... args) throws Exception {
         if (userRepo.count() == 0) {
@@ -32,9 +31,11 @@ public class MusicDBInit implements CommandLineRunner {
         userRoleRepo.saveAll(List.of(adminRole, userRole));
 
         UserEntity user = new UserEntity()
-                .setName("user").setPassword(passwordEncoder.encode("123")).setRoles(List.of(userRole));
+                .setUsername("user").setPassword(passwordEncoder.encode("123"))
+                .setFullName("User Userov").setEmail("a@b.c").setRoles(List.of(userRole));
         UserEntity admin = new UserEntity()
-                .setName("admin").setPassword(passwordEncoder.encode("123")).setRoles(List.of(userRole, adminRole));
+                .setUsername("admin").setPassword(passwordEncoder.encode("123"))
+                .setFullName("Admin Adminov").setEmail("a@b.c").setRoles(List.of(userRole, adminRole));
         userRepo.saveAll(List.of(user, admin));
 
         }

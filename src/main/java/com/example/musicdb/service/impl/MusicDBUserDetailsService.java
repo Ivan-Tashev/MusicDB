@@ -14,25 +14,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class MusicDBUserService implements UserDetailsService {
+public class MusicDBUserDetailsService implements UserDetailsService {
     private final UserRepo userRepo;
 
-    public MusicDBUserService(UserRepo userRepo) {
+    public MusicDBUserDetailsService(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepo.findByName(username).orElseThrow(
+        UserEntity userEntity = userRepo.findByUsername(username).orElseThrow(
                 () -> new UsernameNotFoundException("User with name " + username + " not found."));
-        return mapToUserDetails(userEntity);
-    }
 
-    private UserDetails mapToUserDetails(UserEntity userEntity) {
-        List<GrantedAuthority> authorities =  userEntity.getRoles().stream()
+        List<GrantedAuthority> authorities = userEntity.getRoles().stream()
                 .map(userRoleEntity -> new SimpleGrantedAuthority("ROLE_" + userRoleEntity.getRole().name()))
                 .collect(Collectors.toList());
 
-        return new User(userEntity.getName(), userEntity.getPassword(), authorities);
+        return new User(userEntity.getUsername(), userEntity.getPassword(), authorities);
     }
 }
