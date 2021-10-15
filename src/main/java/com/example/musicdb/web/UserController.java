@@ -6,6 +6,7 @@ import com.example.musicdb.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,6 +45,13 @@ public class UserController {
         return modelAndView;
     }
 
+    @ModelAttribute
+    public void setUserRegBindModel(Model model) {
+        if (!model.containsAttribute("userRegBindModel")) {
+            model.addAttribute("userRegBindModel", new UserRegBindModel());
+        }
+    }
+
     @GetMapping("/register")
     public String getRegisterPage() {
         return "register";
@@ -52,9 +60,15 @@ public class UserController {
     @PostMapping("/register") //  <form th:action="@{/users/register}" method="POST">
     public String registerAndLogin(@Valid UserRegBindModel userRegBindModel,
                                    BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors() || !userRegBindModel.getPassword().equals(userRegBindModel.getConfirmPassword())){
-            // TODO: validate input
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userRegBindModel", userRegBindModel)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegBindModel", bindingResult);
             return "register";
+        }
+        if (userService.usernameExists(userRegBindModel.getUsername())) {
+            redirectAttributes.addFlashAttribute("userRegBindModel", userRegBindModel)
+                    .addFlashAttribute("usernameExists", true);
+            return "redirect:/users/register";
         }
 
         UserServiceModel userServiceModel =

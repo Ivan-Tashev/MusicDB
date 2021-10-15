@@ -1,10 +1,22 @@
 package com.example.musicdb.model.binding;
 
+import com.example.musicdb.model.validator.PasswordsMatch;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+@PasswordsMatch(first = "password", second ="confirmPassword")
 public class UserRegBindModel {
+    @NotEmpty @Size(min = 3)
     private String username;
+    @NotEmpty @Size(min = 3)
     private String fullName;
+    @NotEmpty @Email
     private String email;
+    @NotEmpty @Size(min = 3)
     private String password;
+    @NotEmpty
     private String confirmPassword;
 
     public String getUsername() {

@@ -46,4 +46,9 @@ public class UserServiceImpl implements UserService {
 
         return modelMapper.map(registeredUser, UserServiceModel.class);
     }
+
+    @Override
+    public boolean usernameExists(String username) {
+        return userRepo.findByUsername(username).isPresent();
+    }
 }
