@@ -36,7 +36,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/users/login") // custom login form served by Controller
                 .usernameParameter("username") // from <input type="text" name="username" ... />
                 .passwordParameter("password") // from <input type="password" name="password" ... />
-                .defaultSuccessUrl("/") // after successful Login go to Homepage
+                .defaultSuccessUrl("/home") // after successful Login go to Homepage
                 .failureForwardUrl("/users/login-error")
                 .and()
                 .logout()

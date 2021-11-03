@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons :: head"></head>
+<body>
+<header th:replace="fragments/commons :: nav"></header>
+<main class="p-5 align-content-center bg-blur ">
+    <div class="col-sm-12 my-auto text-white text-center">
+        <div class="p-5">
+            <p>Ops... we have encountered an error.</p>
+            <p>We are notified, and will fix it shortly...</p>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/commons :: footer"></footer>
+<script th:src="@{js/search-bar.js}"></script>
+</body>
+</html>
