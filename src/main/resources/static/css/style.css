@@ -46,3 +46,15 @@ body {
     background-image: url("/img/instruments.jpg");
     background-position: center;
 }
+
+input:valid {
+    border: green solid 2px;
+}
+
+input:invalid {
+    border: red solid 2px;
+}
+
+input:invalid:required {
+    background-image: linear-gradient(to right, pink, purple);
+}

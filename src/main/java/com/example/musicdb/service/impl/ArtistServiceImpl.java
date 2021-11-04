@@ -1,7 +1,6 @@
 package com.example.musicdb.service.impl;
 
 import com.example.musicdb.model.entity.ArtistEntity;
-import com.example.musicdb.model.view.ArtistViewModel;
 import com.example.musicdb.repo.ArtistRepo;
 import com.example.musicdb.service.ArtistService;
 import com.google.gson.Gson;
@@ -15,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ArtistServiceImpl implements ArtistService {
@@ -34,10 +32,8 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public List<ArtistViewModel> findAllArtists() {
-        return artistRepo.findAll().stream()
-                .map(artistEntity -> modelMapper.map(artistEntity, ArtistViewModel.class))
-                .collect(Collectors.toList());
+    public List<String> findAllArtists() {
+        return artistRepo.findAllArtistNames();
     }
 
     @Override

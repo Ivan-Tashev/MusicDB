@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="username" th:value="*{username}" th:errorclass="is-invalid"
-                               type="text"
+                               type="text" required minlength="3" maxlength="20"
                                id="inputUsername"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="fullName" th:value="*{fullName}" th:errorclass="is-invalid"
-                               type="text"
+                               type="text" required minlength="3" maxlength="20"
                                id="inputFullName"
                                class="form-control"
                                aria-describedby="fullNameHelpInline">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="email" th:value="*{email}" th:errorclass="is-invalid"
-                               type="text"
+                               type="email" required
                                id="inputEmail"
                                class="form-control"
                                aria-describedby="emailHelpInline">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="password" th:errorclass="is-invalid"
-                               type="password"
+                               type="password" required minlength="5" maxlength="20"
                                id="inputPassword"
                                class="form-control"
                                aria-describedby="passwordHelpInline">
@@ -103,7 +103,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="confirmPassword" th:errorclass="is-invalid"
-                               type="password"
+                               type="password" required minlength="5" maxlength="20"
                                id="inputConfirmPassword"
                                class="form-control"
                                aria-describedby="confirmPasswordHelpInline">

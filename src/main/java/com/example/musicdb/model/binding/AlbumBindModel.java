@@ -3,21 +3,39 @@ package com.example.musicdb.model.binding;
 import com.example.musicdb.model.entity.enums.Genre;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
 
 public class AlbumBindModel {
-
+    @Size(min = 3, max = 20)
     private String name;
     private String imageUrl;
     private String videoUrl;
+    @Size(min = 10)
     private String description;
+    @Min(0)
     private Integer copies;
+    @DecimalMin("0")
     private BigDecimal price;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
+    @NotNull
     private Genre genre;
+    @NotNull
+    private String artist;
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public AlbumBindModel setArtist(String artist) {
+        this.artist = artist;
+        return this;
+    }
 
     public String getName() {
         return name;

@@ -4,9 +4,17 @@ spring:
     url: "jdbc:mysql://localhost:3306/musicDB?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
     username: root
     password: "${MySQL_PASSWORD}"
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 5MB
   sql:
     init:
       mode: always
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
   jpa:
     # Choose either MySQL 8 or MySQL 5 below
     #    For MySQL 8
@@ -25,7 +33,6 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-
 
 #server:
 #  port: 8081

@@ -51,8 +51,7 @@
                     <select id="artist" class="custom-select">
                         <option value="" selected>Select Artist</option>
                         <option th:each="a : ${artists}"
-                                th:text="${a.name}" th:value="${a.name}"
-                                value="">First Artist</option>
+                                th:text="${a.name}" th:value="${a.name}">First Artist</option>
                     </select>
                     <small id="artistError" class="form-text bg-danger rounded">You must select artist</small>
                 </div>
