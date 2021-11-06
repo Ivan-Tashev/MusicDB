@@ -1,14 +1,14 @@
 package com.example.musicdb.web;
 
-import com.example.musicdb.model.view.AlbumViewModel;
+import com.example.musicdb.model.entity.AlbumEntity;
 import com.example.musicdb.repo.AlbumRepo;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/albums")
@@ -22,9 +22,7 @@ public class AlbumRestController {
     }
 
     @GetMapping("/api")
-    public List<AlbumViewModel> findAll() {
-        return albumRepo.findAll().stream()
-                .map(albumEntity -> modelMapper.map(albumEntity, AlbumViewModel.class))
-                .collect(Collectors.toList());
+    public ResponseEntity<List<AlbumEntity>> findAll() {
+        return ResponseEntity.ok().body(albumRepo.findAll());
     }
 }

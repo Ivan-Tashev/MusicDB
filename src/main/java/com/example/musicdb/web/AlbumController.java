@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.time.ZoneId;
 
 @Controller
 @RequestMapping("/albums")
@@ -43,15 +44,23 @@ public class AlbumController {
     public String addAlbum(@Valid AlbumBindModel albumBindModel, BindingResult bindingResult,
                            RedirectAttributes redirectAttributes,
                            @AuthenticationPrincipal UserDetails principal) {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("albumBindModel", albumBindModel)
                     .addFlashAttribute("org.springframework.validation.BindingResult.albumBindModel", bindingResult);
             return "redirect:/albums/add";
         }
         AlbumServiceModel albumServiceModel = modelMapper.map(albumBindModel, AlbumServiceModel.class)
-                .setUserName(principal.getUsername());
+                .setUserName(principal.getUsername())
+                .setReleaseDate(
+                        albumBindModel.getReleaseDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
         albumService.createAlbum(albumServiceModel);
 
         return "redirect:/home";
+    }
+
+    @GetMapping("/details/{id}")
+    public String getDetailsPage(@PathVariable Long id, Model model) {
+        model.addAttribute("albumViewModel", albumService.findById(id));
+        return "details";
     }
 }

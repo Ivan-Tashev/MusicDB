@@ -51,4 +51,10 @@ public class UserServiceImpl implements UserService {
     public boolean usernameExists(String username) {
         return userRepo.findByUsername(username).isPresent();
     }
+
+    @Override
+    public UserEntity findByUsername(String username) {
+        return userRepo.findByUsername(username)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }

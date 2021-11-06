@@ -49,4 +49,10 @@ public class ArtistServiceImpl implements ArtistService {
             }
         }
     }
+
+    @Override
+    public ArtistEntity findByName(String artist) {
+        return artistRepo.findByName(artist)
+                .orElseThrow(() -> new IllegalArgumentException("Artist " + artist + " could not be found."));
+    }
 }

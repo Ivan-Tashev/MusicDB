@@ -34,40 +34,40 @@
     </div>
     <hr class="border-bottom w-50">
     <div class="mt-5 col-sm-12 my-auto align-self-center">
-        <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
+        <input type="search" id="searchInput" class="form-control mr-sm-2 w-50"
                placeholder="Enter album title or artist name" aria-label="Search">
     </div>
     <hr class="border-bottom w-75">
     <div class="row mt-5" id="albumsList">
         <!-- Start single album -->
-        <div class="col-md-3">
-            <div class="card mb-4 box-shadow">
-                <img th:src="@{/img/metallica.jpg}" class="card-img-top" alt="Thumbnail [100%x225]"
-                     data-holder-rendered="true"
-                     style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                    <div class="text-center">
-                        <p class="card-text border-bottom ">Name: Name of album</p>
-                        <p class="card-text border-bottom ">Artist: Metallica</p>
-                        <p class="card-text border-bottom ">Genre: Metal</p>
-                        <p class="card-text border-bottom ">Price: 19.99</p>
-                        <p class="card-text border-bottom">Release Date: </p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a type="button" class="btn btn-sm btn-outline-secondary">Details</a>
-                        </div>
-                        <div class="btn-group">
-                            <a type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="col-md-3">-->
+<!--            <div class="card mb-4 box-shadow">-->
+<!--                <img th:src="@{/img/metallica.jpg}" class="card-img-top" alt="Thumbnail [100%x225]"-->
+<!--                     data-holder-rendered="true"-->
+<!--                     style="height: 225px; width: 100%; display: block;">-->
+<!--                <div class="card-body">-->
+<!--                    <div class="text-center">-->
+<!--                        <p class="card-text border-bottom ">Name: Name of album</p>-->
+<!--                        <p class="card-text border-bottom ">Artist: Metallica</p>-->
+<!--                        <p class="card-text border-bottom ">Genre: Metal</p>-->
+<!--                        <p class="card-text border-bottom ">Price: 19.99</p>-->
+<!--                        <p class="card-text border-bottom">Release Date: </p>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex justify-content-between align-items-center">-->
+<!--                        <div class="btn-group">-->
+<!--                            <a type="button" class="btn btn-sm btn-outline-secondary">Details</a>-->
+<!--                        </div>-->
+<!--                        <div class="btn-group">-->
+<!--                            <a type="button" class="btn btn-sm btn-outline-secondary">Delete</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <!-- EO: Start single album -->
     </div>
 </main>
 <footer th:replace="fragments/commons :: footer"></footer>
-<script th:src="@{js/search-bar.js}"></script>
+<script th:src="@{js/search-bar2.js}"></script>
 </body>
 </html>
