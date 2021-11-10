@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:8.0.27
+    ports:
+      - "3306:3306"
+    command: ["--character-set-server=utf8mb4"]
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABSE=musicDB
+
+#  musicdb:
+#    image: anl1/mymusicdb:v1
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - MYSQL_HOST=db # refer to service:dv (at line 2)

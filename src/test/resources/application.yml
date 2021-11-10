@@ -1,0 +1,31 @@
+spring:
+#  datasource: // default in memory credentials
+#    driverClassName: org.h2.Driver
+#    url: "jdbc:h2:mem:testdb"
+#    username: sa
+#    password: ''
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    defer-datasource-initialization: true
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 5MB
+  sql:
+    init:
+      mode: always
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

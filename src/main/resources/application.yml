@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/musicDB?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    url: "jdbc:mysql://${MYSQL_HOST:localhost}:3306/musicDB?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
     username: root
-    password: "${MySQL_PASSWORD}"
+    password: "${MYSQL_PASSWORD}"
   servlet:
     multipart:
       max-file-size: 1MB
@@ -33,6 +33,3 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-
-#server:
-#  port: 8081
