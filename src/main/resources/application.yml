@@ -1,9 +1,30 @@
+server:
+  port: ${PORT:8080}
 spring:
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://${MYSQL_HOST:localhost}:3306/musicDB?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password: "${MYSQL_PASSWORD}"
+    driver-class-name: org.postgresql.Driver
+    url: ${JDBC_DATABASE_URL:}
+    username: ${JDBC_DATABASE_USERNAME:}
+    password: ${JDBC_DATABASE_PASSWORD:}
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+
+  jpa:
+    # Choose either MySQL 8 or MySQL 5 below
+    #    For MySQL 8
+    # database-platform: org.hibernate.dialect.MySQL8Dialect
+    #    For PostgreSQL
+    database-platform: ${SPRING_JPA_DATABASE-PLATFORM:}
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    defer-datasource-initialization: true
+
   servlet:
     multipart:
       max-file-size: 1MB
@@ -15,19 +36,6 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-  jpa:
-    # Choose either MySQL 8 or MySQL 5 below
-    #    For MySQL 8
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    #For MySQL 5
-    # database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
-    defer-datasource-initialization: true
 
 logging:
   level:
