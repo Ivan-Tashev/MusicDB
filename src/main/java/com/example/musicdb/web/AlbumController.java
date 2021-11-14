@@ -61,6 +61,6 @@ public class AlbumController {
     @GetMapping("/details/{id}")
     public String getDetailsPage(@PathVariable Long id, Model model) {
         model.addAttribute("albumViewModel", albumService.findById(id));
-        return "details";
+        return "details.html";
     }
 }

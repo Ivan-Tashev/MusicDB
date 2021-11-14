@@ -41,7 +41,8 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public AlbumViewModel findById(Long id) {
-        return albumRepo.findById(id).map(albumEntity -> modelMapper.map(albumEntity, AlbumViewModel.class)
+        return albumRepo.findById(id)
+                .map(albumEntity -> modelMapper.map(albumEntity, AlbumViewModel.class)
                         .setArtist(artistService.findByName(albumEntity.getArtistEntity().getName()).getName()))
                 .orElseThrow(IllegalArgumentException::new);
     }

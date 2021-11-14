@@ -127,7 +127,7 @@ class AlbumControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get(
                         ALBUM_CONTROLLER_PREFIX + "/details/{id}", testAlbumId))
                 .andExpect(status().isOk())
-                .andExpect(view().name("details"))
+                .andExpect(view().name("details.html"))
                 .andExpect(model().attributeExists("albumViewModel"));
     }
 }
