@@ -9,9 +9,9 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABSE=musicDB
 
-#  musicdb:
-#    image: anl1/mymusicdb:v1
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - MYSQL_HOST=db # refer to service:dv (at line 2)
+  musicdb:
+    image: anl1/mymusicdb:v1
+    ports:
+      - "8080:8080"
+    environment:
+      - MYSQL_HOST=db # refer to service:dv (at line 2)
